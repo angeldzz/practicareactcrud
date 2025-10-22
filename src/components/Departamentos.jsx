@@ -1,6 +1,7 @@
 import React, { Component } from 'react'
 import axios from 'axios'
 import Global from '../Global'
+import { NavLink } from "react-router-dom";
 export default class Departamentos extends Component {
     url = Global.urlDepartamentos;
     state = {
@@ -43,7 +44,7 @@ export default class Departamentos extends Component {
                                 <td>{departamento.numero}</td>
                                 <td>{departamento.nombre}</td>
                                 <td>{departamento.localidad}</td>
-                                <td><button className='btn btn-warning'>Update</button></td>
+                                <td><NavLink to={`updateDepartamento/${departamento.numero}/${departamento.nombre}/${departamento.localidad}`} className='btn btn-warning'>Update</NavLink></td>
                                 <td><button onClick={() => {this.deleteDepartamento(departamento.numero)}} className='btn btn-danger'>Delete</button></td>
                             </tr>
                         )

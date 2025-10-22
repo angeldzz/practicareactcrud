@@ -4,6 +4,9 @@ import axios from 'axios'
 import { Navigate } from "react-router-dom";
 export default class CreateDepartamento extends Component {
     url = Global.urlDepartamentos
+    state = {
+        status:false
+    }
     cajaNumero = React.createRef()
     cajaNombre = React.createRef()
     cajaLocalidad = React.createRef()
@@ -16,6 +19,9 @@ export default class CreateDepartamento extends Component {
         }
         let request = "api/Departamentos"
         axios.post(this.url + request, departamento).then(response => {
+            this.setState({
+                status:true
+            })
             console.log("Departamento Creado")
         })
     }
@@ -23,13 +29,17 @@ export default class CreateDepartamento extends Component {
         return (
             <div>
                 <form>
-                    <label>Introduzca Numero</label>
-                    <input type="text" ref={this.cajaNumero} />
-                    <label>Introduzca Nombre</label>
-                    <input type="text" ref={this.cajaNombre} />
-                    <label>Introduzca Localidad</label>
-                    <input type="text" ref={this.cajaLocalidad} />
-                    <button onClick={this.createDepartamento}>Crear Departamento</button>
+                    <label className='form-label'>Introduzca Numero</label>
+                    <input className='form-control' type="text" ref={this.cajaNumero} />
+                    <label className='form-label'>Introduzca Nombre</label>
+                    <input className='form-control' type="text" ref={this.cajaNombre} />
+                    <label className='form-label'>Introduzca Localidad</label>
+                    <input className='form-control' type="text" ref={this.cajaLocalidad} />
+                    <button className='btn btn-primary' onClick={this.createDepartamento}>Crear Departamento</button>
+                    {
+                    this.state.status === true &&
+                        <Navigate to="/"/>
+                    }
                 </form>
             </div>
         )

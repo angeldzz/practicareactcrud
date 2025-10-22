@@ -3,12 +3,32 @@ import { NavLink } from "react-router-dom";
 export default class MenuRutas extends Component {
   render() {
     return (
-      <div>
-        <ul>
-        <li><NavLink to="/">Departamentos</NavLink></li>
-        <li><NavLink to="/createDepartamento">Create Departamentos</NavLink></li>
-        </ul>
-      </div>
+      <nav className="navbar navbar-expand-lg navbar-dark bg-black">
+                      <div className="container-fluid">
+                          <NavLink className="navbar-brand" to="/">Departamentos</NavLink>
+                          <button
+                              className="navbar-toggler"
+                              type="button"
+                              data-bs-toggle="collapse"
+                              data-bs-target="#navbarSupportedContent"
+                              aria-controls="navbarSupportedContent"
+                              aria-expanded="false"
+                              aria-label="Toggle navigation"
+                          >
+                              <span className="navbar-toggler-icon"></span>
+                          </button>
+                          <div className="collapse navbar-collapse" id="navbarSupportedContent">
+                              <ul className="navbar-nav me-auto mb-2 mb-lg-0">
+                                  <li className="nav-item">
+                                      <NavLink className="nav-link" to="/">Departamento</NavLink>
+                                  </li>
+                                  <li className="nav-item">
+                                      <NavLink className="nav-link" to="/createDepartamento">Create Departamento</NavLink>
+                                  </li>
+                              </ul>
+                          </div>
+                      </div>
+                  </nav>
     )
   }
 }
